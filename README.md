@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-FF4B4B.svg)](https://streamlit.io/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)](https://scikit-learn.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/Jitesh-Tiwari07/disease-prediction-ml/blob/main/LICENSE)
+
 
 **Machine Learning Project** for predicting the possibility of **Heart Disease, Diabetes, and Breast Cancer** using patient data.
 
