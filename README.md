@@ -3,6 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-FF4B4B.svg)](https://streamlit.io/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)](https://scikit-learn.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/Jitesh-Tiwari07/disease-prediction-ml/blob/main/LICENSE)
 
 **Machine Learning Project** for predicting the possibility of **Heart Disease, Diabetes, and Breast Cancer** using patient data.
 
@@ -10,181 +11,36 @@
 
 ## 📋 Project Objective
 
-This project applies **classification techniques** on structured medical datasets to predict disease risk. It demonstrates end-to-end Machine Learning workflow including data preprocessing, model training, evaluation, and deployment as an interactive web app.
+This project applies classification techniques on structured medical datasets to predict disease risk. It demonstrates a complete end-to-end Machine Learning workflow including data preprocessing, model training, evaluation, and deployment as an interactive Streamlit Web Application.
 
-### Key Features
-- Supports **3 diseases**: Heart Disease, Diabetes, Breast Cancer
-- 4 ML Models: Logistic Regression, SVM, Random Forest, **XGBoost**
-- Interactive **Streamlit Web Application**
-- Proper data preprocessing (handling categorical & missing values)
-- Model saving and loading using Joblib
+### 🎯 Supported Diseases
+
+* ❤️ Heart Disease Prediction
+* 🩸 Diabetes Prediction
+* 🎗️ Breast Cancer Prediction
+
+### ✨ Key Features
+
+* Supports 3 diseases: Heart Disease, Diabetes, Breast Cancer
+* Multiple ML Models: Logistic Regression, SVM, Random Forest, XGBoost
+* Interactive Streamlit Web Application
+* Handles categorical data and missing values
+* Model saving and loading using Joblib
+* Real-time prediction interface
+* Model comparison and evaluation
 
 ---
 
 ## 📊 Datasets Used
 
-<img width="668" height="169" alt="image" src="https://github.com/user-attachments/assets/d9b8855d-60d5-402a-9e8f-2aa935302b49" />
+<img width="553" height="129" alt="image" src="https://github.com/user-attachments/assets/d90ff914-cd69-4f92-83a7-7604ef4af5ca" />
 
-
-## 🛠️ Technologies & Tools
-
-- **Programming**: Python
-- **ML Libraries**: scikit-learn, XGBoost, pandas, numpy
-- **Visualization**: Matplotlib, Seaborn
-- **Frontend**: Streamlit
-- **Others**: Joblib, LabelEncoder, SimpleImputer
-
----
-
-## 🚀 How to Run Locally
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/YOUR_USERNAME/disease-prediction-ml.git
-cd disease-prediction-ml
-
-2. Install Dependencies
-Bashpip install -r requirements.txt
-3. Train the Models
-Bashpython src/train.py
-4. Run the Web App
-Bashstreamlit run app/app.py
-
-📈 Model Performance
-<img width="449" height="203" alt="image" src="https://github.com/user-attachments/assets/5d82d6cf-e237-427c-818b-c205d49607f5" />
-(Results may vary slightly based on train-test split)
-
-📷 Screenshots
-
-🗂️ Project Structure
-<img width="698" height="347" alt="image" src="https://github.com/user-attachments/assets/3ac80565-d324-4eb2-a399-dc5f139a71fc" />
-
-⚠️ Disclaimer
-This project is created for educational and learning purposes only. The predictions should not be used for real medical diagnosis. Always consult a qualified healthcare professional for medical advice.
-
-
-⭐ Show Your Support
-If you found this project helpful, please give it a STAR ⭐ on GitHub!
-
-
-
-
-
-
-
-# 🩺 Disease Prediction System Using Machine Learning
-
-![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange)
-![Streamlit](https://img.shields.io/badge/Streamlit-Web_App-red)
-![License](https://img.shields.io/badge/License-MIT-green)
-
-## 📌 Overview
-
-The Disease Prediction System is a Machine Learning-based web application designed to predict the likelihood of diseases using patient medical data. The project leverages classification algorithms to analyze health parameters and provide accurate predictions through an interactive user interface.
-
-This system assists in early disease risk assessment by utilizing structured healthcare datasets and machine learning models.
-
----
-
-## 🎯 Objectives
-
-* Predict diseases based on patient medical information.
-* Compare the performance of multiple classification algorithms.
-* Provide a user-friendly interface for real-time predictions.
-* Visualize model performance and evaluation metrics.
-
----
-
-## ✨ Features
-
-* Data preprocessing and cleaning
-* Feature scaling and normalization
-* Multiple Machine Learning models
-* Disease prediction in real time
-* Interactive Streamlit dashboard
-* Performance evaluation and comparison
-* Confusion matrix visualization
-* Accuracy and classification reports
-
----
-
-## 🛠️ Tech Stack
-
-### Programming Language
-
-* Python
-
-### Libraries & Frameworks
-
-* Scikit-Learn
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Streamlit
-* XGBoost
-
-### Tools
-
-* Jupyter Notebook
-* Git
-* GitHub
-
----
-
-## 📂 Project Structure
-
-```text
-disease-prediction-ml/
-│
-├── data/
-│   └── dataset.csv
-│
-├── models/
-│   └── disease_model.pkl
-│
-├── src/
-│   ├── train.py
-│   ├── predict.py
-│   ├── preprocess.py
-│   └── evaluate.py
-│
-├── app/
-│   └── app.py
-│
-├── screenshots/
-│
-├── requirements.txt
-├── README.md
-└── .gitignore
-```
-
----
-
-## 📊 Dataset
-
-The project can be trained on healthcare datasets such as:
-
-* Heart Disease Dataset
-* Diabetes Dataset
-* Breast Cancer Dataset
-
-### Sample Features
-
-* Age
-* Gender
-* Blood Pressure
-* Cholesterol Level
-* Glucose Level
-* BMI
-* Medical Symptoms
 
 ---
 
 ## 🤖 Machine Learning Algorithms
 
-The following models were evaluated:
+The following classification models were implemented and evaluated:
 
 * Logistic Regression
 * Support Vector Machine (SVM)
@@ -193,71 +49,101 @@ The following models were evaluated:
 
 ---
 
-## 📈 Model Performance
+## 🛠️ Technologies & Tools
 
-| Algorithm           | Accuracy |
-| ------------------- | -------- |
-| Logistic Regression | ~75.3%     |
-| SVM                 | ~98.2%     |
-| Random Forest       | ~87.5%     |
+### Programming Language
 
+* Python
 
-(Results may vary slightly based on train-test split)
+### Libraries
+
+* Pandas
+* NumPy
+* Scikit-Learn
+* XGBoost
+* Streamlit
+* Joblib
+* Matplotlib
+* Seaborn
+
+### Tools
+
+* Git
+* GitHub
+* Jupyter Notebook
 
 ---
 
-## 🚀 Installation
+## 🗂️ Project Structure
 
-### Clone Repository
+```text
+disease-prediction-ml/
+├── app/
+│   └── app.py
+│
+├── src/
+│   └── train.py
+│
+├── data/
+│   └── raw/
+│       ├── heart_disease.csv
+│       ├── diabetes.csv
+│       └── breast_cancer.csv
+│
+├── models/
+│   ├── heart_random_forest.pkl
+│   ├── diabetes_random_forest.pkl
+│   └── breast_cancer_random_forest.pkl
+│
+├── results/
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+---
+
+## 📈 Model Performance
+
+| Disease       | Best Model          | Accuracy |
+| ------------- | ------------------- | -------- |
+| Heart Disease | Random Forest       | ~87.5%   |
+| Diabetes      | Logistic Regression | ~75.3%   |
+| Breast Cancer | SVM                 | ~98.2%   |
+
+> Results may vary slightly depending on train-test split and random state.
+
+---
+
+## 🚀 How to Run Locally
+
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/disease-prediction-ml.git
+git clone <repository url>
 cd disease-prediction-ml
 ```
 
-### Create Virtual Environment
-
-```bash
-python -m venv venv
-```
-
-### Activate Environment
-
-#### Windows
-
-```bash
-venv\Scripts\activate
-```
-
-#### Linux / macOS
-
-```bash
-source venv/bin/activate
-```
-
-### Install Dependencies
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## ▶️ Train the Model
+### 3. Train the Models
 
 ```bash
 python src/train.py
 ```
 
----
-
-## 🌐 Run the Web Application
+### 4. Run the Web Application
 
 ```bash
 streamlit run app/app.py
 ```
 
-Open the application in your browser:
+### 5. Open in Browser
 
 ```text
 http://localhost:8501
@@ -267,17 +153,32 @@ http://localhost:8501
 
 ## 📸 Screenshots
 
-### Application Dashboard
+### Dashboard
 
-Add screenshots here.
+<img width="369" height="981" alt="image" src="https://github.com/user-attachments/assets/7698ab52-9647-4180-981e-7260899a61ed" />
 
-### Model Performance
 
-Add accuracy graphs and confusion matrix here.
+### Prediction Results
+
+<img width="1536" height="976" alt="image" src="https://github.com/user-attachments/assets/87379bcb-314a-4db3-a8ad-1ffc3a973573" />
+
+<img width="1538" height="729" alt="image" src="https://github.com/user-attachments/assets/edb96b18-7c76-486d-aac3-a6b143205245" />
+
+<img width="1537" height="850" alt="image" src="https://github.com/user-attachments/assets/fbb65e79-4ee6-415d-bf84-39c20efd17f5" />
 
 ---
 
 
+## ⚠️ Disclaimer
 
+This project is developed for educational and learning purposes only.
 
-⭐ If you found this project useful, consider giving it a star on GitHub.
+The predictions generated by this application should not be considered medical advice or used as a substitute for professional healthcare diagnosis. Always consult qualified healthcare professionals for medical decisions.
+
+---
+
+## ⭐ Show Your Support
+
+If you found this project helpful, please consider giving it a ⭐ Star on GitHub.
+
+**Made with ❤️ for Learning Machine Learning**
