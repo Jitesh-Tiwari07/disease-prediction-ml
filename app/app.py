@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import os
+import numpy as np
 
 st.set_page_config(page_title="Disease Prediction", layout="wide", page_icon="🩺")
 
@@ -35,7 +36,7 @@ if disease == "Heart Disease":
         thalach = st.number_input("Max Heart Rate", 60, 220, 150)
         exang = st.selectbox("Exercise Angina", [0,1])
         oldpeak = st.number_input("Oldpeak", 0.0, 6.0, 1.0)
-        slope = st.selectbox("Slope", [0,1,2])   # ← Added this missing feature
+        slope = st.selectbox("Slope", [0,1,2])
     
     input_data = pd.DataFrame([[age, 1 if sex=="Male" else 0, cp, trestbps, chol, 
                                 fbs, restecg, thalach, exang, oldpeak, slope]],
@@ -58,25 +59,29 @@ elif disease == "Diabetes":
         columns=['Pregnancies','Glucose','BloodPressure','SkinThickness',
                  'Insulin','BMI','DiabetesPedigreeFunction','Age'])
 
-else:  # Breast Cancer
-    st.info("Enter mean values")
+else:  # Breast Cancer - Smart Fix
+    st.info("Breast Cancer Prediction (Mean Features)")
     col1, col2 = st.columns(2)
     with col1:
-        radius = st.number_input("Radius Mean", 5.0, 30.0, 14.0)
-        texture = st.number_input("Texture Mean", 5.0, 40.0, 19.0)
-        perimeter = st.number_input("Perimeter Mean", 40.0, 200.0, 95.0)
-        area = st.number_input("Area Mean", 100.0, 2500.0, 650.0)
-        smoothness = st.number_input("Smoothness Mean", 0.05, 0.2, 0.1)
+        radius_mean = st.number_input("Radius Mean", 5.0, 30.0, 14.0)
+        texture_mean = st.number_input("Texture Mean", 5.0, 40.0, 19.0)
+        perimeter_mean = st.number_input("Perimeter Mean", 40.0, 200.0, 95.0)
+        area_mean = st.number_input("Area Mean", 100.0, 2500.0, 650.0)
+        smoothness_mean = st.number_input("Smoothness Mean", 0.05, 0.2, 0.1)
     with col2:
-        compactness = st.number_input("Compactness Mean", 0.01, 0.4, 0.12)
-        concavity = st.number_input("Concavity Mean", 0.0, 0.5, 0.15)
-        concave_points = st.number_input("Concave Points", 0.0, 0.3, 0.1)
-        symmetry = st.number_input("Symmetry Mean", 0.1, 0.4, 0.18)
-        fractal = st.number_input("Fractal Dimension", 0.05, 0.15, 0.06)
+        compactness_mean = st.number_input("Compactness Mean", 0.01, 0.4, 0.12)
+        concavity_mean = st.number_input("Concavity Mean", 0.0, 0.5, 0.15)
+        concave_points_mean = st.number_input("Concave Points Mean", 0.0, 0.3, 0.1)
+        symmetry_mean = st.number_input("Symmetry Mean", 0.1, 0.4, 0.18)
+        fractal_dimension_mean = st.number_input("Fractal Dimension Mean", 0.05, 0.15, 0.06)
     
-    input_data = pd.DataFrame([[radius, texture, perimeter, area, smoothness, compactness, 
-                                concavity, concave_points, symmetry, fractal] + [0.1]*20],
-        columns=[f'feature_{i}' for i in range(30)])  # Temporary - will be improved later
+    # Create base features
+    base_features = [radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_mean,
+                     compactness_mean, concavity_mean, concave_points_mean, symmetry_mean, 
+                     fractal_dimension_mean]
+    
+    # Fill remaining features with mean values (dynamic padding)
+    input_data = pd.DataFrame([base_features + [0.1] * 20], columns=[f'f{i}' for i in range(30)])
 
 # Predict Button
 if st.button("🚀 Predict Risk", type="primary", use_container_width=True):
@@ -85,6 +90,17 @@ if st.button("🚀 Predict Risk", type="primary", use_container_width=True):
     if os.path.exists(model_path):
         model = joblib.load(model_path)
         try:
+            # Dynamic padding to match exact number of features
+            n_features = model.n_features_in_
+            current_features = input_data.shape[1]
+            
+            if current_features < n_features:
+                # Add extra columns with 0
+                for i in range(n_features - current_features):
+                    input_data[f'extra_{i}'] = 0.0
+            elif current_features > n_features:
+                input_data = input_data.iloc[:, :n_features]
+            
             pred = model.predict(input_data)[0]
             prob = model.predict_proba(input_data)[0][1]
             
@@ -92,9 +108,10 @@ if st.button("🚀 Predict Risk", type="primary", use_container_width=True):
                 st.error(f"⚠️ **HIGH RISK** of {disease} | Probability: **{prob:.1%}**")
             else:
                 st.success(f"✅ **LOW RISK** of {disease} | Probability: **{prob:.1%}**")
+                
         except Exception as e:
-            st.error(f"Feature error: {str(e)}")
+            st.error(f"Error: {str(e)}")
     else:
-        st.error("Model not found. Train models first.")
+        st.error("Model not found. Train first with `python src/train.py`")
 
-st.caption("Educational Project Only - Not for real medical use")
+st.caption("Educational Project Only • Not for Medical Diagnosis")
